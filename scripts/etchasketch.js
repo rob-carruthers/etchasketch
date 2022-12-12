@@ -15,6 +15,12 @@ for (rowNumber = 0; rowNumber < 16; rowNumber++) {
         const gridBox = document.createElement('div');
         gridBox.classList.add('column');
         gridBox.id = 'column' + columnNumber;
-        gridRow.appendChild(gridBox);
+
+        // add hover listeners and class modifiers
+        gridBox.addEventListener('mouseenter', (e) => e.target.classList.add('hover'));
+        gridBox.addEventListener('mouseleave', (e) => e.target.classList.remove('hover'));
+        gridRow.appendChild(gridBox); 
     }
 }
+
+
