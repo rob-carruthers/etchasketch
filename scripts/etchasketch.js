@@ -2,7 +2,23 @@
 const sketchContainer = document.querySelector("#sketchContainer");
 let nRowsUser = 16; // set a default number of rows / columns
 const gridSize = 960; // set the maximum grid size
+const darkenSpeed = 50;
 
+function darken(e) {
+    // subtract a given amount from the brightness of a div
+    // first get the rgb() of the target of the function
+    let rgbString = getComputedStyle(e.target).getPropertyValue("background-color")
+    // split into the individual RGB values and create an Array of them
+    rgb = rgbString.slice(rgbString.indexOf("(") + 1, rgbString.indexOf(")")).split(", ")
+    // subtract the given darkenSpeed from each RGB value
+    rgbNew = rgb.map( function(x) { 
+        // don't go below 0
+        if (x > 0) { return x - darkenSpeed }
+        else return 0 ; });
+    // create the new string to plug back into the DOM
+    let newRgbString = "rgb(" + String(rgbNew[0]) + ", " + String(rgbNew[1] + ", " + String(rgbNew[2] + ")"))
+    e.target.style.backgroundColor = newRgbString;
+}
 
 // Set up a 2D for loop to create the 16x16 grid
 function setGrid (nRows) {
@@ -25,8 +41,7 @@ function setGrid (nRows) {
         gridBox.style.height = boxSize;
 
         // add hover listeners and class modifiers
-        gridBox.addEventListener('mouseenter', (e) => e.target.classList.add('hover'));
-        gridBox.addEventListener('mouseleave', (e) => e.target.classList.remove('hover'));
+        gridBox.addEventListener('mouseenter', darken);
         gridRow.appendChild(gridBox); 
         }
     }
@@ -50,17 +65,21 @@ function resizeGrid() {
     }
 
     nRowsUser = nRows;
+    // remove the existing rows one by one
     while (sketchContainer.firstChild) {
         sketchContainer.removeChild(sketchContainer.lastChild)
     }
+    // set a new grid with n rows/columns
     setGrid(nRowsUser);
 }
 
 setGrid(nRowsUser) // set the grid up at the initial value
 
+// set up the resizeButton
 const resizeButton = document.querySelector("#resizeButton");
 resizeButton.addEventListener('click', resizeGrid);
 
+// set up the resetButton with a quick shim function
 const resetButton = document.querySelector("#resetButton");
 resetButton.addEventListener('click', () => {
     nRowsUser = 16;
