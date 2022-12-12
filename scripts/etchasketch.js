@@ -19,7 +19,8 @@ function setGrid (nRows) {
         const gridBox = document.createElement('div');
         gridBox.classList.add('column');
         gridBox.id = 'column' + columnNumber;
-        boxSize = Math.floor(gridSize / nRows) + "px";
+        // gridSize - (2*nRows) accounts for 1px border either side of box
+        boxSize = Math.floor((gridSize - (2*nRows)) / nRows) + "px";
         gridBox.style.width = boxSize;
         gridBox.style.height = boxSize;
 
