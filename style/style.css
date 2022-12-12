@@ -1,0 +1,23 @@
+/* Etch a Sketch style.css */
+
+body {
+    font-family: sans-serif;
+}
+
+p {
+    color:blue;
+}
+
+.row {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.column {
+    flex-shrink: 0;
+    background-color: gray;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
