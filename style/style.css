@@ -13,12 +13,14 @@ p {
     flex-shrink: 0;
 }
 
+#sketchContainer {
+    margin: 10px;
+}
+
 .column {
     flex-shrink: 0;
-    background-color: gray;
-    border: 1px solid black;
-    width: 40px;
-    height: 40px;
+    background-color: lightgray;
+    border: 1px solid gray;
     transition: 0.07s;
 }
 
