@@ -2,6 +2,10 @@
 
 body {
     font-family: sans-serif;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p {
@@ -15,15 +19,25 @@ p {
 
 #sketchContainer {
     margin: 10px;
+    border: 2px solid black;
 }
 
 .column {
     flex-shrink: 0;
     background-color: white;
-    border: 1px solid gray;
+    border: 0px solid lightgray;
     transition: 0.07s;
 }
 
 .hover {
     background-color: blue;
+}
+
+button {
+    background-color: darkgrey;
+}
+
+h1 {
+    padding: 0;
+    margin: 5px;
 }

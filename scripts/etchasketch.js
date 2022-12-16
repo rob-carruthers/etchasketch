@@ -1,7 +1,7 @@
 // Set up the container by querying the appropriate div
 const sketchContainer = document.querySelector("#sketchContainer");
 let nRowsUser = 16; // set a default number of rows / columns
-const gridSize = 960; // set the maximum grid size
+const gridSize = 800; // set the maximum grid size
 const darkenSpeed = 50;
 
 function darken(e) {
@@ -35,8 +35,8 @@ function setGrid (nRows) {
         const gridBox = document.createElement('div');
         gridBox.classList.add('column');
         gridBox.id = 'column' + columnNumber;
-        // gridSize - (2*nRows) accounts for 1px border either side of box
-        boxSize = Math.floor((gridSize - (2*nRows)) / nRows) + "px";
+        boxN = Math.floor(gridSize / nRows)
+        boxSize = boxN + "px";
         gridBox.style.width = boxSize;
         gridBox.style.height = boxSize;
 
